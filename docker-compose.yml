@@ -1,0 +1,34 @@
+version: "3.4"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: deployment/server/Dockerfile
+      target: dev
+      args:
+        TARGET_DIR: /app
+        GOBIN: /app
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    networks:
+      - wisdom
+
+  client:
+    build:
+      context: .
+      dockerfile: deployment/client/Dockerfile
+      target: dev
+      args:
+        TARGET_DIR: /app
+        GOBIN: /app
+    depends_on:
+      - server
+    env_file:
+      - .env
+    networks:
+      - wisdom
+
+networks:
+  wisdom:
