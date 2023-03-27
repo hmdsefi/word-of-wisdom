@@ -19,4 +19,4 @@ secret key and comparing it to the response sent by the client. If the HMACs mat
 is authenticated.
 
 Another reason for using HMAC was because there were not much details in the requirements I received. 
-As a result, I chose the most common and robust algorithm to implement.
+As a result, I chose the most common and simple algorithm to implement.
